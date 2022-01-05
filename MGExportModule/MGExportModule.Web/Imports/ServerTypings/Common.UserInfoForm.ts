@@ -8,6 +8,7 @@
         UpdateDate: Serenity.DateEditor;
         UpdateUserId: Serenity.IntegerEditor;
         IsDelete: Serenity.BooleanEditor;
+        UserImage: Serenity.ImageUploadEditor;
     }
 
     export class UserInfoForm extends Serenity.PrefixedContext {
@@ -25,6 +26,7 @@
                 var w1 = s.IntegerEditor;
                 var w2 = s.DateEditor;
                 var w3 = s.BooleanEditor;
+                var w4 = s.ImageUploadEditor;
 
                 Q.initFormType(UserInfoForm, [
                     'CustomCode', w0,
@@ -34,7 +36,8 @@
                     'InsertUserId', w1,
                     'UpdateDate', w2,
                     'UpdateUserId', w1,
-                    'IsDelete', w3
+                    'IsDelete', w3,
+                    'UserImage', w4
                 ]);
             }
         }

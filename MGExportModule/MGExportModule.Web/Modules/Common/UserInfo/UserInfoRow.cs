@@ -18,6 +18,7 @@ namespace MGExportModule.Common.Entities
     [InsertPermission("Administration:General:Insert")]
     [ModifyPermission("Administration:General:Modify")]
     [DeletePermission("Administration:General:Delete")]
+    [LookupScript]
     public sealed class UserInfoRow : Row, IIdRow, INameRow
     {
         [DisplayName("User Id"), Column("UserID"), Identity]
@@ -98,7 +99,7 @@ namespace MGExportModule.Common.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.CustomCode; }
+            get { return Fields.UserFullName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

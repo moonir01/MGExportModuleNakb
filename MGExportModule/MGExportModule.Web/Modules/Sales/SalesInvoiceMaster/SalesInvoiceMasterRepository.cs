@@ -1,14 +1,14 @@
 ﻿
-namespace MGExportModule.Common.Repositories
+namespace MGExportModule.Sales.Repositories
 {
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.CmnItemMasterRow;
+    using MyRow = Entities.SalesInvoiceMasterRow;
 
-    public class CmnItemMasterRepository
+    public class SalesInvoiceMasterRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -37,11 +37,7 @@ namespace MGExportModule.Common.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { 
-        
-
-        
-        }
+        private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

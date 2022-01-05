@@ -8084,3 +8084,15 @@ section.content > .s-DataGrid {
 .s-Common-CmnItemMasterDialog .caption {
   width: 300px;
 }
+.s-Sales-SalesInvoiceDetailDialog > .size {
+  width: 650px;
+}
+.s-Sales-SalesInvoiceDetailDialog .caption {
+  width: 150px;
+}
+.s-Sales-SalesInvoiceMasterDialog > .size {
+  width: 650px;
+}
+.s-Sales-SalesInvoiceMasterDialog .caption {
+  width: 150px;
+}

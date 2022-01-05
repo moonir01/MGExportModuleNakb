@@ -14,8 +14,13 @@
 
     export namespace UserInfoRow {
         export const idProperty = 'UserId';
-        export const nameProperty = 'CustomCode';
+        export const nameProperty = 'UserFullName';
         export const localTextPrefix = 'Common.UserInfo';
+        export const lookupKey = 'Common.UserInfo';
+
+        export function getLookup(): Q.Lookup<UserInfoRow> {
+            return Q.getLookup<UserInfoRow>('Common.UserInfo');
+        }
         export const deletePermission = 'Administration:General:Delete';
         export const insertPermission = 'Administration:General:Insert';
         export const readPermission = 'Administration:General:View';

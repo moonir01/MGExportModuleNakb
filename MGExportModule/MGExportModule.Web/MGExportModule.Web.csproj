@@ -1168,6 +1168,12 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.PermissionKeys.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceMasterColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1241,6 +1247,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\_references.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\_Ext\AuditLogViewer\AuditLogViewer.ts" />
     <TypeScriptCompile Include="Modules\_Ext\AuditLogViewer\AuditLogViewerDialog.ts" />
     <TypeScriptCompile Include="Modules\_Ext\AuditLog\AuditLogActionTypeFormatter.ts" />
@@ -2145,6 +2152,31 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Common.CmnItemMasterForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailDialog.ts" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Content\site\site.sales.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceMasterRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceMasterService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterDialog.ts" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceMasterForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2161,6 +2193,9 @@
     <Compile Include="App_Start\SiteInitialization.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Sales.SalesInvoiceDetailEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\_Ext.AuditLogActionTypeFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
@@ -2269,6 +2304,7 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesListRequest.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
+    <Compile Include="Modules\Common\NRow.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAParser.cs" />
@@ -2602,6 +2638,19 @@
     <Compile Include="Modules\Common\CmnItemMaster\CmnItemMasterPage.cs" />
     <Compile Include="Modules\Common\CmnItemMaster\CmnItemMasterColumns.cs" />
     <Compile Include="Modules\Common\CmnItemMaster\CmnItemMasterForm.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailRow.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailRepository.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailEndpoint.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailPage.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailColumns.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailForm.cs" />
+    <Compile Include="Modules\Sales\SalesNavigation.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterRow.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterRepository.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterEndpoint.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterPage.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterColumns.cs" />
+    <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

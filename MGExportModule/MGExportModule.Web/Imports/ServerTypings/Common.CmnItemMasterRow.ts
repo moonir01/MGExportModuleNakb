@@ -30,6 +30,11 @@
         export const idProperty = 'ItemId';
         export const nameProperty = 'CustomCode';
         export const localTextPrefix = 'Common.CmnItemMaster';
+        export const lookupKey = 'Common.CmnItemMaster';
+
+        export function getLookup(): Q.Lookup<CmnItemMasterRow> {
+            return Q.getLookup<CmnItemMasterRow>('Common.CmnItemMaster');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';

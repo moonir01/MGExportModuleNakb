@@ -438,6 +438,20 @@ namespace MVC
             {
                 public const string TerritoryIndex = "~/Modules/Northwind/Territory/TerritoryIndex.cshtml";
             }
+
+        }
+
+        public static class Sales
+        {
+            public static class SalesInvoiceDetail
+            {
+                public const string SalesInvoiceDetailIndex = "~/Modules/Sales/SalesInvoiceDetail/SalesInvoiceDetailIndex.cshtml";
+            }
+
+            public static class SalesInvoiceMaster
+            {
+                public const string SalesInvoiceMasterIndex = "~/Modules/Sales/SalesInvoiceMaster/SalesInvoiceMasterIndex.cshtml";
+            }
         }
 
         public static class Shared

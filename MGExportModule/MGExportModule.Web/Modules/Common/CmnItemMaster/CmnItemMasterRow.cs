@@ -13,6 +13,7 @@ namespace MGExportModule.Common.Entities
     [DisplayName("Cmn Item Master"), InstanceName("Cmn Item Master")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript]
     public sealed class CmnItemMasterRow : Row, IIdRow, INameRow
     {
         [DisplayName("Item Id"), Column("ItemID"), Identity]

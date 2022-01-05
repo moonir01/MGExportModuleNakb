@@ -11,6 +11,7 @@ namespace MGExportModule.Common.Columns
 
     [ColumnsScript("Common.CmnItemMaster")]
     [BasedOnRow(typeof(Entities.CmnItemMasterRow), CheckNames = true)]
+  
     public class CmnItemMasterColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]

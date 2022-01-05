@@ -1072,6 +1072,8 @@ declare namespace MGExportModule.Common {
         const idProperty = "ItemId";
         const nameProperty = "CustomCode";
         const localTextPrefix = "Common.CmnItemMaster";
+        const lookupKey = "Common.CmnItemMaster";
+        function getLookup(): Q.Lookup<CmnItemMasterRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -1267,6 +1269,7 @@ declare namespace MGExportModule.Common {
         UpdateDate: Serenity.DateEditor;
         UpdateUserId: Serenity.IntegerEditor;
         IsDelete: Serenity.BooleanEditor;
+        UserImage: Serenity.ImageUploadEditor;
     }
     class UserInfoForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1289,8 +1292,10 @@ declare namespace MGExportModule.Common {
     }
     namespace UserInfoRow {
         const idProperty = "UserId";
-        const nameProperty = "CustomCode";
+        const nameProperty = "UserFullName";
         const localTextPrefix = "Common.UserInfo";
+        const lookupKey = "Common.UserInfo";
+        function getLookup(): Q.Lookup<UserInfoRow>;
         const deletePermission = "Administration:General:Delete";
         const insertPermission = "Administration:General:Insert";
         const readPermission = "Administration:General:View";
@@ -2712,6 +2717,153 @@ declare namespace MGExportModule.Northwind {
             Delete = "Northwind/Territory/Delete",
             Retrieve = "Northwind/Territory/Retrieve",
             List = "Northwind/Territory/List"
+        }
+    }
+}
+declare namespace MGExportModule.Sales {
+}
+declare namespace MGExportModule.Sales {
+    interface SalesInvoiceDetailForm {
+        CustomCode: Serenity.StringEditor;
+        ItemId: Serenity.LookupEditor;
+        Quontity: Serenity.IntegerEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        TotalPrice: Serenity.DecimalEditor;
+        Coaid: Serenity.IntegerEditor;
+        DrAmount: Serenity.DecimalEditor;
+        CrAmount: Serenity.DecimalEditor;
+        IsDelete: Serenity.BooleanEditor;
+    }
+    class SalesInvoiceDetailForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace MGExportModule.Sales {
+    interface SalesInvoiceDetailRow {
+        SalesDetailId?: number;
+        CustomCode?: string;
+        SalesId?: number;
+        ItemId?: string;
+        Quontity?: number;
+        UnitPrice?: number;
+        TotalPrice?: number;
+        Coaid?: number;
+        DrAmount?: number;
+        CrAmount?: number;
+        IsDelete?: boolean;
+        SalesCustomCode?: string;
+        SalesDescription?: string;
+        SalesBuyerId?: number;
+        SalesSalesDate?: string;
+        SalesIsDelete?: boolean;
+    }
+    namespace SalesInvoiceDetailRow {
+        const idProperty = "SalesDetailId";
+        const nameProperty = "CustomCode";
+        const localTextPrefix = "Sales.SalesInvoiceDetail";
+        const deletePermission = "Sales:SalesInvoiceDetail:Delete";
+        const insertPermission = "Sales:SalesInvoiceDetail:Insert";
+        const readPermission = "Sales:SalesInvoiceDetail:Read";
+        const updatePermission = "Sales:SalesInvoiceDetail:Update";
+        const enum Fields {
+            SalesDetailId = "SalesDetailId",
+            CustomCode = "CustomCode",
+            SalesId = "SalesId",
+            ItemId = "ItemId",
+            Quontity = "Quontity",
+            UnitPrice = "UnitPrice",
+            TotalPrice = "TotalPrice",
+            Coaid = "Coaid",
+            DrAmount = "DrAmount",
+            CrAmount = "CrAmount",
+            IsDelete = "IsDelete",
+            SalesCustomCode = "SalesCustomCode",
+            SalesDescription = "SalesDescription",
+            SalesBuyerId = "SalesBuyerId",
+            SalesSalesDate = "SalesSalesDate",
+            SalesIsDelete = "SalesIsDelete"
+        }
+    }
+}
+declare namespace MGExportModule.Sales {
+    namespace SalesInvoiceDetailService {
+        const baseUrl = "Sales/SalesInvoiceDetail";
+        function Create(request: Serenity.SaveRequest<SalesInvoiceDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SalesInvoiceDetailRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SalesInvoiceDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesInvoiceDetailRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Sales/SalesInvoiceDetail/Create",
+            Update = "Sales/SalesInvoiceDetail/Update",
+            Delete = "Sales/SalesInvoiceDetail/Delete",
+            Retrieve = "Sales/SalesInvoiceDetail/Retrieve",
+            List = "Sales/SalesInvoiceDetail/List"
+        }
+    }
+}
+declare namespace MGExportModule.Sales {
+}
+declare namespace MGExportModule.Sales {
+    interface SalesInvoiceMasterForm {
+        CustomCode: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+        BuyerId: Serenity.LookupEditor;
+        SalesDate: Serenity.DateEditor;
+        IsDelete: Serenity.BooleanEditor;
+        SalesDetails: SalesInvoiceDetailEditor;
+    }
+    class SalesInvoiceMasterForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace MGExportModule.Sales {
+    interface SalesInvoiceMasterRow {
+        Id?: number;
+        CustomCode?: string;
+        Description?: string;
+        BuyerId?: number;
+        SalesDate?: string;
+        IsDelete?: boolean;
+        SalesDetails?: SalesInvoiceDetailRow[];
+    }
+    namespace SalesInvoiceMasterRow {
+        const idProperty = "Id";
+        const nameProperty = "CustomCode";
+        const localTextPrefix = "Sales.SalesInvoiceMaster";
+        const deletePermission = "Sales:SalesInvoiceMaster:Delete";
+        const insertPermission = "Sales:SalesInvoiceMaster:Insert";
+        const readPermission = "Sales:SalesInvoiceMaster:Read";
+        const updatePermission = "Sales:SalesInvoiceMaster:Update";
+        const enum Fields {
+            Id = "Id",
+            CustomCode = "CustomCode",
+            Description = "Description",
+            BuyerId = "BuyerId",
+            SalesDate = "SalesDate",
+            IsDelete = "IsDelete",
+            SalesDetails = "SalesDetails"
+        }
+    }
+}
+declare namespace MGExportModule.Sales {
+    namespace SalesInvoiceMasterService {
+        const baseUrl = "Sales/SalesInvoiceMaster";
+        function Create(request: Serenity.SaveRequest<SalesInvoiceMasterRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SalesInvoiceMasterRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Sales/SalesInvoiceMaster/Create",
+            Update = "Sales/SalesInvoiceMaster/Update",
+            Delete = "Sales/SalesInvoiceMaster/Delete",
+            Retrieve = "Sales/SalesInvoiceMaster/Retrieve",
+            List = "Sales/SalesInvoiceMaster/List"
         }
     }
 }
@@ -4590,6 +4742,50 @@ declare namespace MGExportModule.Northwind {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceDetailDialog extends _Ext.DialogBase<SalesInvoiceDetailRow, any> {
+        protected getFormKey(): string;
+        protected getRowType(): typeof SalesInvoiceDetailRow;
+        protected getService(): string;
+        protected form: SalesInvoiceDetailForm;
+        constructor(options: any);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceDetailEditor extends _Ext.GridEditorBase<SalesInvoiceDetailRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SalesInvoiceDetailDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceDetailGrid extends _Ext.GridBase<SalesInvoiceDetailRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SalesInvoiceDetailDialog;
+        protected getRowType(): typeof SalesInvoiceDetailRow;
+        protected getService(): string;
+        constructor(container: JQuery, options: any);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceMasterDialog extends _Ext.DialogBase<SalesInvoiceMasterRow, any> {
+        protected getFormKey(): string;
+        protected getRowType(): typeof SalesInvoiceMasterRow;
+        protected getService(): string;
+        protected form: SalesInvoiceMasterForm;
+        constructor(options: any);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceMasterGrid extends _Ext.GridBase<SalesInvoiceMasterRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SalesInvoiceMasterDialog;
+        protected getRowType(): typeof SalesInvoiceMasterRow;
+        protected getService(): string;
+        constructor(container: JQuery, options: any);
     }
 }
 declare namespace _Ext {
