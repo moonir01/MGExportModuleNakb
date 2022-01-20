@@ -878,12 +878,14 @@ declare namespace MGExportModule.Common {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CmnItemBrandRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CmnItemBrandRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetCustomCode(request: GetCustomCodeRequest, onSuccess?: (response: GetCustomCodeResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Common/CmnItemBrand/Create",
             Update = "Common/CmnItemBrand/Update",
             Delete = "Common/CmnItemBrand/Delete",
             Retrieve = "Common/CmnItemBrand/Retrieve",
-            List = "Common/CmnItemBrand/List"
+            List = "Common/CmnItemBrand/List",
+            GetCustomCode = "Common/CmnItemBrand/GetCustomCode"
         }
     }
 }
@@ -1258,12 +1260,32 @@ declare namespace MGExportModule.Common {
     }
 }
 declare namespace MGExportModule.Common {
+    interface GetCustomCodeRequest extends Serenity.ListRequest {
+        CustomerId?: string;
+    }
+}
+declare namespace MGExportModule.Common {
+    interface GetCustomCodeResponse extends Serenity.ServiceResponse {
+        CustomCode?: string;
+    }
+}
+declare namespace MGExportModule.Common {
+    interface GetUserCodeResponse extends Serenity.ServiceResponse {
+        CustomCode?: string;
+    }
+}
+declare namespace MGExportModule.Common {
+    interface GetUserTypeResponse extends Serenity.ServiceResponse {
+        CustomCode?: string;
+    }
+}
+declare namespace MGExportModule.Common {
 }
 declare namespace MGExportModule.Common {
     interface UserInfoForm {
         CustomCode: Serenity.StringEditor;
         UserFullName: Serenity.StringEditor;
-        UserTypeId: Serenity.IntegerEditor;
+        UserTypeId: Serenity.LookupEditor;
         InsertDate: Serenity.DateEditor;
         InsertUserId: Serenity.IntegerEditor;
         UpdateDate: Serenity.DateEditor;
@@ -1322,12 +1344,14 @@ declare namespace MGExportModule.Common {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserInfoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserInfoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetCustomCode(request: GetCustomCodeRequest, onSuccess?: (response: GetUserCodeResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Common/UserInfo/Create",
             Update = "Common/UserInfo/Update",
             Delete = "Common/UserInfo/Delete",
             Retrieve = "Common/UserInfo/Retrieve",
-            List = "Common/UserInfo/List"
+            List = "Common/UserInfo/List",
+            GetCustomCode = "Common/UserInfo/GetCustomCode"
         }
     }
 }
@@ -1383,6 +1407,64 @@ declare namespace MGExportModule.Common {
         PreferenceType?: string;
         Name?: string;
         Value?: string;
+    }
+}
+declare namespace MGExportModule.Common {
+}
+declare namespace MGExportModule.Common {
+    interface UserTypeForm {
+        CustomCode: Serenity.StringEditor;
+        UserTypeName: Serenity.StringEditor;
+        IsDelete: Serenity.BooleanEditor;
+    }
+    class UserTypeForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace MGExportModule.Common {
+    interface UserTypeRow {
+        UserTypeId?: number;
+        CustomCode?: string;
+        UserTypeName?: string;
+        IsDelete?: boolean;
+    }
+    namespace UserTypeRow {
+        const idProperty = "UserTypeId";
+        const nameProperty = "UserTypeName";
+        const localTextPrefix = "Common.UserType";
+        const lookupKey = "Common.UserType";
+        function getLookup(): Q.Lookup<UserTypeRow>;
+        const deletePermission = "Common:UserType:Delete";
+        const insertPermission = "Common:UserType:Insert";
+        const readPermission = "Common:UserType:Read";
+        const updatePermission = "Common:UserType:Update";
+        const enum Fields {
+            UserTypeId = "UserTypeId",
+            CustomCode = "CustomCode",
+            UserTypeName = "UserTypeName",
+            IsDelete = "IsDelete"
+        }
+    }
+}
+declare namespace MGExportModule.Common {
+    namespace UserTypeService {
+        const baseUrl = "Common/UserType";
+        function Create(request: Serenity.SaveRequest<UserTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<UserTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserTypeRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetCustomCode(request: Serenity.ListRequest, onSuccess?: (response: GetUserTypeResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Common/UserType/Create",
+            Update = "Common/UserType/Update",
+            Delete = "Common/UserType/Delete",
+            Retrieve = "Common/UserType/Retrieve",
+            List = "Common/UserType/List",
+            GetCustomCode = "Common/UserType/GetCustomCode"
+        }
     }
 }
 declare namespace MGExportModule {
@@ -4227,6 +4309,7 @@ declare namespace MGExportModule.Common {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: CmnItemBrandForm;
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace MGExportModule.Common {
@@ -4532,6 +4615,7 @@ declare namespace MGExportModule.Common {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: UserInfoForm;
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace MGExportModule.Common {
@@ -4549,6 +4633,25 @@ declare namespace MGExportModule.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace MGExportModule.Common {
+    class UserTypeDialog extends _Ext.DialogBase<UserTypeRow, any> {
+        protected getFormKey(): string;
+        protected getRowType(): typeof UserTypeRow;
+        protected getService(): string;
+        protected form: UserTypeForm;
+        constructor(options: any);
+        protected afterLoadEntity(): void;
+    }
+}
+declare namespace MGExportModule.Common {
+    class UserTypeGrid extends _Ext.GridBase<UserTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof UserTypeDialog;
+        protected getRowType(): typeof UserTypeRow;
+        protected getService(): string;
+        constructor(container: JQuery, options: any);
     }
 }
 declare namespace MGExportModule.Membership {
@@ -4756,9 +4859,19 @@ declare namespace MGExportModule.Sales {
 declare namespace MGExportModule.Sales {
     class SalesInvoiceDetailEditor extends _Ext.GridEditorBase<SalesInvoiceDetailRow> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof SalesInvoiceDetailDialog;
+        protected getDialogType(): typeof SalesInvoiceDetailEditorDialog;
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace MGExportModule.Sales {
+    class SalesInvoiceDetailEditorDialog extends _Ext.EditorDialogBase<SalesInvoiceDetailRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: SalesInvoiceDetailForm;
+        constructor();
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace MGExportModule.Sales {

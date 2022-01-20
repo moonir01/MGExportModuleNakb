@@ -1162,7 +1162,22 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Common.CmnItemSizeService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.GetCustomCodeRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.GetCustomCodeResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.GetUserCodeResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.GetUserTypeResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Common.UserInfoColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.UserTypeColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.PermissionKeys.ts">
@@ -1247,6 +1262,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\_references.ts" />
     <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
+    <TypeScriptCompile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailEditorDialog.ts" />
     <TypeScriptCompile Include="Modules\Sales\SalesInvoiceDetail\SalesInvoiceDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\_Ext\AuditLogViewer\AuditLogViewer.ts" />
     <TypeScriptCompile Include="Modules\_Ext\AuditLogViewer\AuditLogViewerDialog.ts" />
@@ -2177,6 +2193,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Sales.SalesInvoiceMasterForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.UserTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.UserTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Common\UserType\UserTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\UserType\UserTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Common\UserType\UserTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.UserTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2651,6 +2679,12 @@
     <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterPage.cs" />
     <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterColumns.cs" />
     <Compile Include="Modules\Sales\SalesInvoiceMaster\SalesInvoiceMasterForm.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypeRow.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypeRepository.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypeEndpoint.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypePage.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypeColumns.cs" />
+    <Compile Include="Modules\Common\UserType\UserTypeForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

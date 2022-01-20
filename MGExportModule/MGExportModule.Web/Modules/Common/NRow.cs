@@ -14,6 +14,13 @@ namespace MGExportModule
             set { Fields.InsertDate[this] = value; }
         }
 
+        //[DisplayName("Create Date"), MinSelectLevel(SelectLevel.Explicit)]
+        //public Boolean? DeleteStatus
+        //{
+        //    get { return Fields.DeleteStatus[this]; }
+        //    set { Fields.DeleteStatus[this] = value; }
+        //}
+
         [DisplayName("Created By")/*, ForeignKey("[dbo].[AppUser]", "Id"), LeftJoin("jUser"), TextualField("Name")*/]
         public Int32? InsertUserId
         {
@@ -70,6 +77,7 @@ namespace MGExportModule
         public Int32Field InsertUserId;
         public DateTimeField UpdateDate;
         public Int64Field UpdateUserId;
+        //public BooleanField DeleteStatus;
 
         public NRowFields() : base()
         {

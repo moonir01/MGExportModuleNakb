@@ -37,7 +37,21 @@ namespace MGExportModule.Sales.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow> {
+            protected override void BeforeSave()
+            {
+                base.BeforeSave();
+
+                Row.InsertDate = DateTime.Now;
+
+                foreach(var itm in Row.SalesDetails)
+                {
+                    if(itm.InsertDate is null)
+                    itm.InsertDate = DateTime.Now;
+                }
+
+            }
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

@@ -42,11 +42,16 @@ namespace MGExportModule.Common.Repositories
             protected override void BeforeSave()
             {
                 base.BeforeSave();
-
+                var user = Authorization.UserDefinition as UserDefinition;
                 Row.InsertDate = DateTime.Now;
+                Row.InsertUserId = user.UserId;
+
+
             }
 
         }
+
+
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

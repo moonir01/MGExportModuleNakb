@@ -8,3 +8,4 @@ using MyPages = MGExportModule.Common.Pages;
 [assembly: NavigationLink(int.MaxValue, "Common/Cmn Item Model", typeof(MyPages.CmnItemModelController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Common/Cmn Item Size", typeof(MyPages.CmnItemSizeController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Common/Item", typeof(MyPages.CmnItemMasterController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Common/User Type", typeof(MyPages.UserTypeController), icon: null)]

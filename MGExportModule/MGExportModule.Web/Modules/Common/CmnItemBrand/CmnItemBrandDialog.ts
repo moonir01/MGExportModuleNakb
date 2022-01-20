@@ -13,6 +13,23 @@ namespace MGExportModule.Common {
         protected getUpdatePermission() { return CmnItemBrandRow.updatePermission; }
 
         protected form = new CmnItemBrandForm(this.idPrefix);
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
 
+            if (this.isNew()) {
+                CmnItemBrandService.GetCustomCode({
+                    CustomerId: "SSS"
+                }, r => {
+                    this.form.CustomCode.value = String(r.CustomCode);
+                });
+            }
+
+            this.form.CustomCode.change(p => {
+                this.form.BrandName.value = this.form.CustomCode.value;
+            });
+
+
+
+        }
     }
 }

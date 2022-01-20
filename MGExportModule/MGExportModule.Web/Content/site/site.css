@@ -8084,6 +8084,12 @@ section.content > .s-DataGrid {
 .s-Common-CmnItemMasterDialog .caption {
   width: 300px;
 }
+.s-Common-UserTypeDialog > .size {
+  width: 650px;
+}
+.s-Common-UserTypeDialog .caption {
+  width: 150px;
+}
 .s-Sales-SalesInvoiceDetailDialog > .size {
   width: 650px;
 }

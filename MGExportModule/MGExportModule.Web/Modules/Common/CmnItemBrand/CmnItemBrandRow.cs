@@ -36,14 +36,14 @@ namespace MGExportModule.Common.Entities
             set { Fields.BrandName[this] = value; }
         }
 
-        [DisplayName("Insert Date"), NotNull]
+        [DisplayName("Insert Date")]
         public DateTime? InsertDate
         {
             get { return Fields.InsertDate[this]; }
             set { Fields.InsertDate[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull]
+        [DisplayName("Insert User Id")]
         public Int32? InsertUserId
         {
             get { return Fields.InsertUserId[this]; }

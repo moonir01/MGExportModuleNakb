@@ -4,7 +4,9 @@ namespace MGExportModule.Common.Endpoints
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
+    using System.Linq;
     using System.Web.Mvc;
     using MyRepository = Repositories.UserInfoRepository;
     using MyRow = Entities.UserInfoRow;
@@ -43,6 +45,42 @@ namespace MGExportModule.Common.Endpoints
             return new MyRepository().List(connection, request);
         }
 
+        [HttpPost]
+        public GetUserCodeResponse GetCustomCode(IDbConnection connection, GetCustomCodeRequest request)
+        {
+            var tbl = MyRow.Fields.As("tbl");
+            var user = Authorization.UserDefinition as UserDefinition;
 
+            var queryMain = new SqlQuery();
+            
+            string Prefix = "MG-";
+            string CustomCode = "";
+
+            //IB-170122-001
+
+            queryMain.Select(tbl.UserId)
+           .From(tbl);
+
+            var data = connection.Query<MyRow>(queryMain).ToList();
+
+            if (data.Count <= 0)
+            {
+                CustomCode = Prefix + DateTime.Now.ToString("DDMMYY") + "001";
+            }
+            else
+            {
+                string query = $"select ISNULL(MAX(UserId),0) from CmnUserInfo";
+                var maxCustomCode = connection.Query<int>(query).FirstOrDefault();
+
+                CustomCode = Prefix + DateTime.Now.ToString("ddMMyy") + "-" + (maxCustomCode + 1).ToString("000");
+            }
+
+            return new GetUserCodeResponse { CustomCode = CustomCode };
+        }
+
+    }
+    public class GetUserCodeResponse : ServiceResponse
+    {
+        public String CustomCode { get; set; }
     }
 }

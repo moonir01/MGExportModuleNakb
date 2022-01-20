@@ -13,6 +13,7 @@ namespace MGExportModule.Common.Forms
     [BasedOnRow(typeof(Entities.CmnItemBrandRow), CheckNames = true)]
     public class CmnItemBrandForm
     {
+
         public String CustomCode { get; set; }
         public String BrandName { get; set; }
         [Hidden]

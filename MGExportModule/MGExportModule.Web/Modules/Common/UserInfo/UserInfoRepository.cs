@@ -39,15 +39,19 @@ namespace MGExportModule.Common.Repositories
 
         private class MySaveHandler : SaveRequestHandler<MyRow> {
 
-            protected override void AfterSave()
+            protected override void BeforeSave()
             {
-                base.AfterSave();
+                base.BeforeSave();
+
+                var user = Authorization.UserDefinition as UserDefinition;
+                Row.InsertDate = DateTime.Now;
+                Row.InsertUserId = user.UserId;
 
 
 
             }
         }
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> {}
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }
     }

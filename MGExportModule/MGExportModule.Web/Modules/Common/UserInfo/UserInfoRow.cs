@@ -51,20 +51,23 @@ namespace MGExportModule.Common.Entities
         }
 
         [DisplayName("User Type Id"), Column("UserTypeID"), NotNull]
+        [LookupEditor(typeof(UserTypeRow))]
         public Int32? UserTypeId
         {
             get { return Fields.UserTypeId[this]; }
             set { Fields.UserTypeId[this] = value; }
         }
 
-        [DisplayName("Insert Date"), NotNull]
+        [DisplayName("Insert Date")]
+        [Hidden]
         public DateTime? InsertDate
         {
             get { return Fields.InsertDate[this]; }
             set { Fields.InsertDate[this] = value; }
         }
 
-        [DisplayName("Insert User Id"), NotNull]
+        [DisplayName("Insert User Id")]
+        [Hidden]
         public Int32? InsertUserId
         {
             get { return Fields.InsertUserId[this]; }
@@ -72,6 +75,7 @@ namespace MGExportModule.Common.Entities
         }
 
         [DisplayName("Update Date")]
+        [Hidden]
         public DateTime? UpdateDate
         {
             get { return Fields.UpdateDate[this]; }
@@ -79,6 +83,7 @@ namespace MGExportModule.Common.Entities
         }
 
         [DisplayName("Update User Id")]
+        [Hidden]
         public Int32? UpdateUserId
         {
             get { return Fields.UpdateUserId[this]; }
@@ -86,6 +91,7 @@ namespace MGExportModule.Common.Entities
         }
 
         [DisplayName("Is Delete"), NotNull]
+        [Hidden]
         public Boolean? IsDelete
         {
             get { return Fields.IsDelete[this]; }

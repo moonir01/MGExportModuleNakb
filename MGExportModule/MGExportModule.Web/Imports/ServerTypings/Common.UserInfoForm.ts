@@ -2,7 +2,7 @@
     export interface UserInfoForm {
         CustomCode: Serenity.StringEditor;
         UserFullName: Serenity.StringEditor;
-        UserTypeId: Serenity.IntegerEditor;
+        UserTypeId: Serenity.LookupEditor;
         InsertDate: Serenity.DateEditor;
         InsertUserId: Serenity.IntegerEditor;
         UpdateDate: Serenity.DateEditor;
@@ -23,21 +23,22 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.IntegerEditor;
+                var w1 = s.LookupEditor;
                 var w2 = s.DateEditor;
-                var w3 = s.BooleanEditor;
-                var w4 = s.ImageUploadEditor;
+                var w3 = s.IntegerEditor;
+                var w4 = s.BooleanEditor;
+                var w5 = s.ImageUploadEditor;
 
                 Q.initFormType(UserInfoForm, [
                     'CustomCode', w0,
                     'UserFullName', w0,
                     'UserTypeId', w1,
                     'InsertDate', w2,
-                    'InsertUserId', w1,
+                    'InsertUserId', w3,
                     'UpdateDate', w2,
-                    'UpdateUserId', w1,
-                    'IsDelete', w3,
-                    'UserImage', w4
+                    'UpdateUserId', w3,
+                    'IsDelete', w4,
+                    'UserImage', w5
                 ]);
             }
         }

@@ -236,4 +236,43 @@ namespace MGExportModule.Migrations.DefaultDB
         }
     }
 
+    [Migration(20220118_154400)]
+    public class MGDB_20220118_154400_Initial : AutoReversingMigration
+    {
+        public override void Up()
+        {
+            this.CreateTableWithId32("CmnUserType", "UserTypeId", s => s
+                .WithColumn("CustomCode").AsString(100).NotNullable()
+                .WithColumn("UserTypeName").AsString(500).NotNullable()
+                .WithColumn("InsertDate").AsDateTime().NotNullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("UpdateDate").AsDateTime().Nullable()
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                .WithColumn("IsDelete").AsBoolean().NotNullable().WithDefaultValue(1));
+        }
+    }
+
+    [Migration(20220118_154700)]
+    public class MGDB_20220118_154700_Initial : AutoReversingMigration
+    {
+        public override void Up()
+        {
+            Delete.Column("UserTypeID").FromTable("CmnUserInfo");
+            //Alter.Table("CmnUserInfo")            
+            //.aColumn("UserTypeID").AsInt32().ForeignKey("CmnUserType", "UserTypeId");  
+            
+        }
+    }
+
+
+
+    //[Migration(20211229_104900)]
+    public class MGDB_20220117_180000_Initial : AutoReversingMigration
+    {
+        public override void Up()
+        {
+           // Execute.Script(HttpContext.Current.Server.MapPath("Migrations/SecurityDB/Scripts/20220116_190030_SP_ModuleWiseParashavaDetails.sql"));
+        }
+    }
+
 }

@@ -14,5 +14,22 @@ namespace MGExportModule.Common {
 
         protected form = new UserInfoForm(this.idPrefix);
 
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
+
+            if (this.isNew()) {
+                UserInfoService.GetCustomCode({
+                  
+                }, r => {
+                    this.form.CustomCode.value = String(r.CustomCode);
+                });
+            }
+
+      
+
+
+
+        }
+
     }
 }

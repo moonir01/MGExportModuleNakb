@@ -6,7 +6,7 @@ namespace MGExportModule.Sales {
     //export class AccBankBranchInformationEditor extends GridEditorBase<AccBankBranchInformationRow> {
     export class SalesInvoiceDetailEditor extends _Ext.GridEditorBase<SalesInvoiceDetailRow> {
         protected getColumnsKey() { return 'Sales.SalesInvoiceDetail'; }
-        protected getDialogType() { return SalesInvoiceDetailDialog; }
+        protected getDialogType() { return SalesInvoiceDetailEditorDialog; }
         protected getLocalTextPrefix() { return SalesInvoiceDetailRow.localTextPrefix; }
 
         constructor(container: JQuery) {

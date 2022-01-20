@@ -2208,7 +2208,8 @@ var MGExportModule;
                 'Update',
                 'Delete',
                 'Retrieve',
-                'List'
+                'List',
+                'GetCustomCode'
             ].forEach(function (x) {
                 CmnItemBrandService[x] = function (r, s, o) {
                     return Q.serviceRequest(CmnItemBrandService.baseUrl + '/' + x, r, s, o);
@@ -2597,20 +2598,21 @@ var MGExportModule;
                     UserInfoForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.IntegerEditor;
+                    var w1 = s.LookupEditor;
                     var w2 = s.DateEditor;
-                    var w3 = s.BooleanEditor;
-                    var w4 = s.ImageUploadEditor;
+                    var w3 = s.IntegerEditor;
+                    var w4 = s.BooleanEditor;
+                    var w5 = s.ImageUploadEditor;
                     Q.initFormType(UserInfoForm, [
                         'CustomCode', w0,
                         'UserFullName', w0,
                         'UserTypeId', w1,
                         'InsertDate', w2,
-                        'InsertUserId', w1,
+                        'InsertUserId', w3,
                         'UpdateDate', w2,
-                        'UpdateUserId', w1,
-                        'IsDelete', w3,
-                        'UserImage', w4
+                        'UpdateUserId', w3,
+                        'IsDelete', w4,
+                        'UserImage', w5
                     ]);
                 }
                 return _this;
@@ -2654,7 +2656,8 @@ var MGExportModule;
                 'Update',
                 'Delete',
                 'Retrieve',
-                'List'
+                'List',
+                'GetCustomCode'
             ].forEach(function (x) {
                 UserInfoService[x] = function (r, s, o) {
                     return Q.serviceRequest(UserInfoService.baseUrl + '/' + x, r, s, o);
@@ -2695,6 +2698,76 @@ var MGExportModule;
                 };
             });
         })(UserPreferenceService = Common.UserPreferenceService || (Common.UserPreferenceService = {}));
+    })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Common;
+    (function (Common) {
+        var UserTypeForm = /** @class */ (function (_super) {
+            __extends(UserTypeForm, _super);
+            function UserTypeForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!UserTypeForm.init) {
+                    UserTypeForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.BooleanEditor;
+                    Q.initFormType(UserTypeForm, [
+                        'CustomCode', w0,
+                        'UserTypeName', w0,
+                        'IsDelete', w1
+                    ]);
+                }
+                return _this;
+            }
+            UserTypeForm.formKey = 'Common.UserType';
+            return UserTypeForm;
+        }(Serenity.PrefixedContext));
+        Common.UserTypeForm = UserTypeForm;
+    })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Common;
+    (function (Common) {
+        var UserTypeRow;
+        (function (UserTypeRow) {
+            UserTypeRow.idProperty = 'UserTypeId';
+            UserTypeRow.nameProperty = 'UserTypeName';
+            UserTypeRow.localTextPrefix = 'Common.UserType';
+            UserTypeRow.lookupKey = 'Common.UserType';
+            function getLookup() {
+                return Q.getLookup('Common.UserType');
+            }
+            UserTypeRow.getLookup = getLookup;
+            UserTypeRow.deletePermission = 'Common:UserType:Delete';
+            UserTypeRow.insertPermission = 'Common:UserType:Insert';
+            UserTypeRow.readPermission = 'Common:UserType:Read';
+            UserTypeRow.updatePermission = 'Common:UserType:Update';
+        })(UserTypeRow = Common.UserTypeRow || (Common.UserTypeRow = {}));
+    })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Common;
+    (function (Common) {
+        var UserTypeService;
+        (function (UserTypeService) {
+            UserTypeService.baseUrl = 'Common/UserType';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List',
+                'GetCustomCode'
+            ].forEach(function (x) {
+                UserTypeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(UserTypeService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(UserTypeService = Common.UserTypeService || (Common.UserTypeService = {}));
     })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
 })(MGExportModule || (MGExportModule = {}));
 var MGExportModule;
@@ -3914,7 +3987,7 @@ var MGExportModule;
 (function (MGExportModule) {
     var Texts;
     (function (Texts) {
-        MGExportModule['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { CmnItemBrand: { BrandId: 1, BrandName: 1, CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemCategory: { CategoryId: 1, CategoryName: 1, CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemGroup: { CustomCode: 1, GroupId: 1, GroupName: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemMaster: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, ItemCategoryCategoryName: 1, ItemCategoryCustomCode: 1, ItemCategoryId: 1, ItemCategoryInsertDate: 1, ItemCategoryInsertUserId: 1, ItemCategoryIsDelete: 1, ItemCategoryUpdateDate: 1, ItemCategoryUpdateUserId: 1, ItemId: 1, ItemName: 1, ModelCustomCode: 1, ModelId: 1, ModelInsertDate: 1, ModelInsertUserId: 1, ModelIsDelete: 1, ModelModelName: 1, ModelUpdateDate: 1, ModelUpdateUserId: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemModel: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, ModelId: 1, ModelName: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemSize: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, SizeId: 1, SizeName: 1, UpdateDate: 1, UpdateUserId: 1 }, UserInfo: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1, UserFullName: 1, UserId: 1, UserImage: 1, UserTypeId: 1 }, UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Sales: { SalesInvoiceDetail: { Coaid: 1, CrAmount: 1, CustomCode: 1, DrAmount: 1, IsDelete: 1, ItemId: 1, Quontity: 1, SalesBuyerId: 1, SalesCustomCode: 1, SalesDescription: 1, SalesDetailId: 1, SalesId: 1, SalesIsDelete: 1, SalesSalesDate: 1, TotalPrice: 1, UnitPrice: 1 }, SalesInvoiceMaster: { BuyerId: 1, CustomCode: 1, Description: 1, Id: 1, IsDelete: 1, SalesDate: 1, SalesDetails: 1 } }, _Ext: { AuditLog: { ActionDate: 1, ActionType: 1, Changes: 1, EntityId: 1, EntityTableName: 1, Id: 1, IpAddress: 1, SessionId: 1, UserId: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
+        MGExportModule['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { CmnItemBrand: { BrandId: 1, BrandName: 1, CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemCategory: { CategoryId: 1, CategoryName: 1, CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemGroup: { CustomCode: 1, GroupId: 1, GroupName: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemMaster: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, ItemCategoryCategoryName: 1, ItemCategoryCustomCode: 1, ItemCategoryId: 1, ItemCategoryInsertDate: 1, ItemCategoryInsertUserId: 1, ItemCategoryIsDelete: 1, ItemCategoryUpdateDate: 1, ItemCategoryUpdateUserId: 1, ItemId: 1, ItemName: 1, ModelCustomCode: 1, ModelId: 1, ModelInsertDate: 1, ModelInsertUserId: 1, ModelIsDelete: 1, ModelModelName: 1, ModelUpdateDate: 1, ModelUpdateUserId: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemModel: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, ModelId: 1, ModelName: 1, UpdateDate: 1, UpdateUserId: 1 }, CmnItemSize: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, SizeId: 1, SizeName: 1, UpdateDate: 1, UpdateUserId: 1 }, UserInfo: { CustomCode: 1, InsertDate: 1, InsertUserId: 1, IsDelete: 1, UpdateDate: 1, UpdateUserId: 1, UserFullName: 1, UserId: 1, UserImage: 1, UserTypeId: 1 }, UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 }, UserType: { CustomCode: 1, IsDelete: 1, UserTypeId: 1, UserTypeName: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Sales: { SalesInvoiceDetail: { Coaid: 1, CrAmount: 1, CustomCode: 1, DrAmount: 1, IsDelete: 1, ItemId: 1, Quontity: 1, SalesBuyerId: 1, SalesCustomCode: 1, SalesDescription: 1, SalesDetailId: 1, SalesId: 1, SalesIsDelete: 1, SalesSalesDate: 1, TotalPrice: 1, UnitPrice: 1 }, SalesInvoiceMaster: { BuyerId: 1, CustomCode: 1, Description: 1, Id: 1, IsDelete: 1, SalesDate: 1, SalesDetails: 1 } }, _Ext: { AuditLog: { ActionDate: 1, ActionType: 1, Changes: 1, EntityId: 1, EntityTableName: 1, Id: 1, IpAddress: 1, SessionId: 1, UserId: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
     })(Texts = MGExportModule.Texts || (MGExportModule.Texts = {}));
 })(MGExportModule || (MGExportModule = {}));
 var _Ext;
@@ -8841,6 +8914,20 @@ var MGExportModule;
             CmnItemBrandDialog.prototype.getDeletePermission = function () { return Common.CmnItemBrandRow.deletePermission; };
             CmnItemBrandDialog.prototype.getInsertPermission = function () { return Common.CmnItemBrandRow.insertPermission; };
             CmnItemBrandDialog.prototype.getUpdatePermission = function () { return Common.CmnItemBrandRow.updatePermission; };
+            CmnItemBrandDialog.prototype.afterLoadEntity = function () {
+                var _this = this;
+                _super.prototype.afterLoadEntity.call(this);
+                if (this.isNew()) {
+                    Common.CmnItemBrandService.GetCustomCode({
+                        CustomerId: "SSS"
+                    }, function (r) {
+                        _this.form.CustomCode.value = String(r.CustomCode);
+                    });
+                }
+                this.form.CustomCode.change(function (p) {
+                    _this.form.BrandName.value = _this.form.CustomCode.value;
+                });
+            };
             CmnItemBrandDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], CmnItemBrandDialog);
@@ -9923,6 +10010,15 @@ var MGExportModule;
             UserInfoDialog.prototype.getDeletePermission = function () { return Common.UserInfoRow.deletePermission; };
             UserInfoDialog.prototype.getInsertPermission = function () { return Common.UserInfoRow.insertPermission; };
             UserInfoDialog.prototype.getUpdatePermission = function () { return Common.UserInfoRow.updatePermission; };
+            UserInfoDialog.prototype.afterLoadEntity = function () {
+                var _this = this;
+                _super.prototype.afterLoadEntity.call(this);
+                if (this.isNew()) {
+                    Common.UserInfoService.GetCustomCode({}, function (r) {
+                        _this.form.CustomCode.value = String(r.CustomCode);
+                    });
+                }
+            };
             UserInfoDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], UserInfoDialog);
@@ -9981,6 +10077,58 @@ var MGExportModule;
             return UserPreferenceStorage;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
+    })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Common;
+    (function (Common) {
+        var UserTypeDialog = /** @class */ (function (_super) {
+            __extends(UserTypeDialog, _super);
+            function UserTypeDialog(options) {
+                var _this = _super.call(this, options) || this;
+                _this.form = new Common.UserTypeForm(_this.idPrefix);
+                return _this;
+            }
+            UserTypeDialog.prototype.getFormKey = function () { return Common.UserTypeForm.formKey; };
+            UserTypeDialog.prototype.getRowType = function () { return Common.UserTypeRow; };
+            UserTypeDialog.prototype.getService = function () { return Common.UserTypeService.baseUrl; };
+            UserTypeDialog.prototype.afterLoadEntity = function () {
+                var _this = this;
+                _super.prototype.afterLoadEntity.call(this);
+                if (this.isNew()) {
+                    Common.UserTypeService.GetCustomCode({}, function (r) {
+                        _this.form.CustomCode.value = String(r.CustomCode);
+                    });
+                }
+            };
+            UserTypeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserTypeDialog);
+            return UserTypeDialog;
+        }(_Ext.DialogBase));
+        Common.UserTypeDialog = UserTypeDialog;
+    })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Common;
+    (function (Common) {
+        var UserTypeGrid = /** @class */ (function (_super) {
+            __extends(UserTypeGrid, _super);
+            function UserTypeGrid(container, options) {
+                return _super.call(this, container, options) || this;
+            }
+            UserTypeGrid.prototype.getColumnsKey = function () { return 'Common.UserType'; };
+            UserTypeGrid.prototype.getDialogType = function () { return Common.UserTypeDialog; };
+            UserTypeGrid.prototype.getRowType = function () { return Common.UserTypeRow; };
+            UserTypeGrid.prototype.getService = function () { return Common.UserTypeService.baseUrl; };
+            UserTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], UserTypeGrid);
+            return UserTypeGrid;
+        }(_Ext.GridBase));
+        Common.UserTypeGrid = UserTypeGrid;
     })(Common = MGExportModule.Common || (MGExportModule.Common = {}));
 })(MGExportModule || (MGExportModule = {}));
 var MGExportModule;
@@ -10926,7 +11074,7 @@ var MGExportModule;
                 return _super.call(this, container) || this;
             }
             SalesInvoiceDetailEditor.prototype.getColumnsKey = function () { return 'Sales.SalesInvoiceDetail'; };
-            SalesInvoiceDetailEditor.prototype.getDialogType = function () { return Sales.SalesInvoiceDetailDialog; };
+            SalesInvoiceDetailEditor.prototype.getDialogType = function () { return Sales.SalesInvoiceDetailEditorDialog; };
             SalesInvoiceDetailEditor.prototype.getLocalTextPrefix = function () { return Sales.SalesInvoiceDetailRow.localTextPrefix; };
             SalesInvoiceDetailEditor = __decorate([
                 Serenity.Decorators.registerClass()
@@ -10935,6 +11083,39 @@ var MGExportModule;
             return SalesInvoiceDetailEditor;
         }(_Ext.GridEditorBase));
         Sales.SalesInvoiceDetailEditor = SalesInvoiceDetailEditor;
+    })(Sales = MGExportModule.Sales || (MGExportModule.Sales = {}));
+})(MGExportModule || (MGExportModule = {}));
+var MGExportModule;
+(function (MGExportModule) {
+    var Sales;
+    (function (Sales) {
+        var SalesInvoiceDetailEditorDialog = /** @class */ (function (_super) {
+            __extends(SalesInvoiceDetailEditorDialog, _super);
+            function SalesInvoiceDetailEditorDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Sales.SalesInvoiceDetailForm(_this.idPrefix);
+                return _this;
+            }
+            SalesInvoiceDetailEditorDialog.prototype.getFormKey = function () { return Sales.SalesInvoiceDetailForm.formKey; };
+            SalesInvoiceDetailEditorDialog.prototype.getLocalTextPrefix = function () { return Sales.SalesInvoiceDetailRow.localTextPrefix; };
+            SalesInvoiceDetailEditorDialog.prototype.getNameProperty = function () { return Sales.SalesInvoiceDetailRow.nameProperty; };
+            SalesInvoiceDetailEditorDialog.prototype.afterLoadEntity = function () {
+                var _this = this;
+                _super.prototype.afterLoadEntity.call(this);
+                //this.form.UnitPrice.change(p => {
+                //    this.form.TotalPrice.value = (this.form.Quontity.value || 0) * this.form.UnitPrice.value || 0;
+                //});
+                this.form.UnitPrice.changeSelect2(function (p) {
+                    _this.form.TotalPrice.value = (_this.form.Quontity.value || 0) * _this.form.UnitPrice.value || 0;
+                });
+            };
+            SalesInvoiceDetailEditorDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], SalesInvoiceDetailEditorDialog);
+            return SalesInvoiceDetailEditorDialog;
+        }(_Ext.EditorDialogBase));
+        Sales.SalesInvoiceDetailEditorDialog = SalesInvoiceDetailEditorDialog;
     })(Sales = MGExportModule.Sales || (MGExportModule.Sales = {}));
 })(MGExportModule || (MGExportModule = {}));
 var MGExportModule;

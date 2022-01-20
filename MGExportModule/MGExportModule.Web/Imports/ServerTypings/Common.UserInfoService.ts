@@ -7,13 +7,15 @@
         export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserInfoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserInfoRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function GetCustomCode(request: GetCustomCodeRequest, onSuccess?: (response: GetUserCodeResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export declare const enum Methods {
             Create = "Common/UserInfo/Create",
             Update = "Common/UserInfo/Update",
             Delete = "Common/UserInfo/Delete",
             Retrieve = "Common/UserInfo/Retrieve",
-            List = "Common/UserInfo/List"
+            List = "Common/UserInfo/List",
+            GetCustomCode = "Common/UserInfo/GetCustomCode"
         }
 
         [
@@ -21,7 +23,8 @@
             'Update', 
             'Delete', 
             'Retrieve', 
-            'List'
+            'List', 
+            'GetCustomCode'
         ].forEach(x => {
             (<any>UserInfoService)[x] = function (r, s, o) {
                 return Q.serviceRequest(baseUrl + '/' + x, r, s, o);

@@ -28,7 +28,7 @@
         public String CustomCode { get => Fields.CustomCode[this]; set => Fields.CustomCode[this] = value; }
 		public partial class RowFields { public StringField CustomCode; }
 
-        [DisplayName("Sales"), Column("SalesID"), NotNull, ForeignKey("[dbo].[SalesInvoiceMaster]", "Id"), LeftJoin("jSales"), TextualField("SalesCustomCode")]
+        [DisplayName("Sales"), Column("SalesID"), ForeignKey("[dbo].[SalesInvoiceMaster]", "Id"), LeftJoin("jSales"), TextualField("SalesCustomCode")]
         public Int32? SalesId { get => Fields.SalesId[this]; set => Fields.SalesId[this] = value; }
 		public partial class RowFields { public Int32Field SalesId; }
 

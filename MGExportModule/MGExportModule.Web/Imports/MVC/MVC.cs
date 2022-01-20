@@ -349,6 +349,11 @@ namespace MVC
             {
                 public const string UserInfoIndex = "~/Modules/Common/UserInfo/UserInfoIndex.cshtml";
             }
+
+            public static class UserType
+            {
+                public const string UserTypeIndex = "~/Modules/Common/UserType/UserTypeIndex.cshtml";
+            }
         }
 
         public static class Errors
