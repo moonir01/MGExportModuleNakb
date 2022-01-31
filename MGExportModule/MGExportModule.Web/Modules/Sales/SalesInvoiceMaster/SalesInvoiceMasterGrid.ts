@@ -12,5 +12,13 @@ namespace MGExportModule.Sales {
         constructor(container: JQuery, options) {
             super(container, options);
         }
+
+
+        protected getSlickOptions() {
+            let opt = super.getSlickOptions();
+            opt.frozenColumn = 2;
+
+            return opt;
+        }
     }
 }

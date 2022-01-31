@@ -16,6 +16,8 @@ namespace MGExportModule.Sales.Forms
     {
         [Tab("General")]
         [Category("Customer Information")]
+        [Hidden]
+        public Int32 Id { get; set; }
         public String CustomCode { get; set; }
         public String Description { get; set; }
         [Category("Buyer Information")]

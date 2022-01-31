@@ -7,13 +7,15 @@
         export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function GetJournalID(request: GetRealizeRequest, onSuccess?: (response: GetJournalIDResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export declare const enum Methods {
             Create = "Sales/SalesInvoiceMaster/Create",
             Update = "Sales/SalesInvoiceMaster/Update",
             Delete = "Sales/SalesInvoiceMaster/Delete",
             Retrieve = "Sales/SalesInvoiceMaster/Retrieve",
-            List = "Sales/SalesInvoiceMaster/List"
+            List = "Sales/SalesInvoiceMaster/List",
+            GetJournalID = "Sales/SalesInvoiceMaster/GetJournalID"
         }
 
         [
@@ -21,7 +23,8 @@
             'Update', 
             'Delete', 
             'Retrieve', 
-            'List'
+            'List', 
+            'GetJournalID'
         ].forEach(x => {
             (<any>SalesInvoiceMasterService)[x] = function (r, s, o) {
                 return Q.serviceRequest(baseUrl + '/' + x, r, s, o);

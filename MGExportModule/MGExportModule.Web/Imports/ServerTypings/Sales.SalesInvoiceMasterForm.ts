@@ -1,5 +1,6 @@
 ﻿namespace MGExportModule.Sales {
     export interface SalesInvoiceMasterForm {
+        Id: Serenity.IntegerEditor;
         CustomCode: Serenity.StringEditor;
         Description: Serenity.StringEditor;
         BuyerId: Serenity.LookupEditor;
@@ -19,19 +20,21 @@
                 SalesInvoiceMasterForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.LookupEditor;
-                var w2 = s.DateEditor;
-                var w3 = s.BooleanEditor;
-                var w4 = SalesInvoiceDetailEditor;
+                var w0 = s.IntegerEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.LookupEditor;
+                var w3 = s.DateEditor;
+                var w4 = s.BooleanEditor;
+                var w5 = SalesInvoiceDetailEditor;
 
                 Q.initFormType(SalesInvoiceMasterForm, [
-                    'CustomCode', w0,
-                    'Description', w0,
-                    'BuyerId', w1,
-                    'SalesDate', w2,
-                    'IsDelete', w3,
-                    'SalesDetails', w4
+                    'Id', w0,
+                    'CustomCode', w1,
+                    'Description', w1,
+                    'BuyerId', w2,
+                    'SalesDate', w3,
+                    'IsDelete', w4,
+                    'SalesDetails', w5
                 ]);
             }
         }

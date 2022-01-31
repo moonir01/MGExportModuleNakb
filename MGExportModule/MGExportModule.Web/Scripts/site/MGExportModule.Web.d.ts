@@ -2803,6 +2803,16 @@ declare namespace MGExportModule.Northwind {
     }
 }
 declare namespace MGExportModule.Sales {
+    interface GetJournalIDResponse extends Serenity.ServiceResponse {
+        JournalID?: number;
+    }
+}
+declare namespace MGExportModule.Sales {
+    interface GetRealizeRequest extends Serenity.ListRequest {
+        RealizeId?: number;
+    }
+}
+declare namespace MGExportModule.Sales {
 }
 declare namespace MGExportModule.Sales {
     interface SalesInvoiceDetailForm {
@@ -2890,6 +2900,7 @@ declare namespace MGExportModule.Sales {
 }
 declare namespace MGExportModule.Sales {
     interface SalesInvoiceMasterForm {
+        Id: Serenity.IntegerEditor;
         CustomCode: Serenity.StringEditor;
         Description: Serenity.StringEditor;
         BuyerId: Serenity.LookupEditor;
@@ -2940,12 +2951,14 @@ declare namespace MGExportModule.Sales {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SalesInvoiceMasterRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetJournalID(request: GetRealizeRequest, onSuccess?: (response: GetJournalIDResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Sales/SalesInvoiceMaster/Create",
             Update = "Sales/SalesInvoiceMaster/Update",
             Delete = "Sales/SalesInvoiceMaster/Delete",
             Retrieve = "Sales/SalesInvoiceMaster/Retrieve",
-            List = "Sales/SalesInvoiceMaster/List"
+            List = "Sales/SalesInvoiceMaster/List",
+            GetJournalID = "Sales/SalesInvoiceMaster/GetJournalID"
         }
     }
 }
@@ -4890,6 +4903,8 @@ declare namespace MGExportModule.Sales {
         protected getService(): string;
         protected form: SalesInvoiceMasterForm;
         constructor(options: any);
+        protected get_ExtDialogOptions(): ExtDialogOptions;
+        protected getToolbarButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace MGExportModule.Sales {
@@ -4899,6 +4914,7 @@ declare namespace MGExportModule.Sales {
         protected getRowType(): typeof SalesInvoiceMasterRow;
         protected getService(): string;
         constructor(container: JQuery, options: any);
+        protected getSlickOptions(): Slick.GridOptions;
     }
 }
 declare namespace _Ext {

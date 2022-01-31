@@ -1,5 +1,6 @@
 ﻿using FluentMigrator;
 using System;
+using System.Web;
 
 namespace MGExportModule.Migrations.DefaultDB
 {
@@ -266,12 +267,13 @@ namespace MGExportModule.Migrations.DefaultDB
 
 
 
-    //[Migration(20211229_104900)]
-    public class MGDB_20220117_180000_Initial : AutoReversingMigration
+    [Migration(20220127_104900)]
+    public class MGDB_20220127_104900_Initial : AutoReversingMigration
     {
         public override void Up()
         {
-           // Execute.Script(HttpContext.Current.Server.MapPath("Migrations/SecurityDB/Scripts/20220116_190030_SP_ModuleWiseParashavaDetails.sql"));
+        //E:\Practice Serenity TVL\MGExportModule\MGExportModule\MGExportModule.Web\Migrations
+            Execute.Script(HttpContext.Current.Server.MapPath("Migrations/MGExportInvoiceDB/SP/spButtonClick.sql"));
         }
     }
 

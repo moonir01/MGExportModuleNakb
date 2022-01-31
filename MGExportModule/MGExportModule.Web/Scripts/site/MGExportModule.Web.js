@@ -3924,18 +3924,20 @@ var MGExportModule;
                 if (!SalesInvoiceMasterForm.init) {
                     SalesInvoiceMasterForm.init = true;
                     var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.LookupEditor;
-                    var w2 = s.DateEditor;
-                    var w3 = s.BooleanEditor;
-                    var w4 = Sales.SalesInvoiceDetailEditor;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.LookupEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.BooleanEditor;
+                    var w5 = Sales.SalesInvoiceDetailEditor;
                     Q.initFormType(SalesInvoiceMasterForm, [
-                        'CustomCode', w0,
-                        'Description', w0,
-                        'BuyerId', w1,
-                        'SalesDate', w2,
-                        'IsDelete', w3,
-                        'SalesDetails', w4
+                        'Id', w0,
+                        'CustomCode', w1,
+                        'Description', w1,
+                        'BuyerId', w2,
+                        'SalesDate', w3,
+                        'IsDelete', w4,
+                        'SalesDetails', w5
                     ]);
                 }
                 return _this;
@@ -3974,7 +3976,8 @@ var MGExportModule;
                 'Update',
                 'Delete',
                 'Retrieve',
-                'List'
+                'List',
+                'GetJournalID'
             ].forEach(function (x) {
                 SalesInvoiceMasterService[x] = function (r, s, o) {
                     return Q.serviceRequest(SalesInvoiceMasterService.baseUrl + '/' + x, r, s, o);
@@ -11153,6 +11156,35 @@ var MGExportModule;
             SalesInvoiceMasterDialog.prototype.getFormKey = function () { return Sales.SalesInvoiceMasterForm.formKey; };
             SalesInvoiceMasterDialog.prototype.getRowType = function () { return Sales.SalesInvoiceMasterRow; };
             SalesInvoiceMasterDialog.prototype.getService = function () { return Sales.SalesInvoiceMasterService.baseUrl; };
+            SalesInvoiceMasterDialog.prototype.get_ExtDialogOptions = function () {
+                var opt = _super.prototype.get_ExtDialogOptions.call(this);
+                opt.PendingChangesConfirmation = false;
+                return opt;
+            };
+            SalesInvoiceMasterDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push({
+                    title: "Save Meter Reading",
+                    cssClass: "send-button",
+                    onClick: function (x) {
+                        var message = "Are you sure want to save?";
+                        Q.confirm(message, function () {
+                            // let entity: MeterReadingRow;
+                            Q.serviceRequest('Sales/SalesInvoiceMaster/GetJournalID', {
+                                RealizeId: _this.form.Id.value
+                                //BillPostingRows: this.form.PaymentList.getItems()
+                            }, function (response) {
+                                //
+                            }, { async: false });
+                            Q.notifySuccess("Meter Reading Saved successfully.", "Message");
+                            Serenity.SubDialogHelper.triggerDataChange(_this);
+                            _this.dialogClose();
+                        });
+                    }
+                });
+                return buttons;
+            };
             SalesInvoiceMasterDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], SalesInvoiceMasterDialog);
@@ -11174,6 +11206,11 @@ var MGExportModule;
             SalesInvoiceMasterGrid.prototype.getDialogType = function () { return Sales.SalesInvoiceMasterDialog; };
             SalesInvoiceMasterGrid.prototype.getRowType = function () { return Sales.SalesInvoiceMasterRow; };
             SalesInvoiceMasterGrid.prototype.getService = function () { return Sales.SalesInvoiceMasterService.baseUrl; };
+            SalesInvoiceMasterGrid.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.frozenColumn = 2;
+                return opt;
+            };
             SalesInvoiceMasterGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], SalesInvoiceMasterGrid);
